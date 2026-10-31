@@ -1,0 +1,1525 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beny – Portofolio Teknologi Informasi</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg:#f4f5fb;
+    --surface:#fff;
+    --text:#14172b;
+    --muted:#5b6078;
+    --line:#e3e6f0;
+    --a1:#4f4f79;
+    --a2:#33464a;
+    --a3:#493941;
+    --grad:linear-gradient(135deg,var(--a1),var(--a2));
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+}
+
+@media (prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) {
+        --bg:#0b0d18;
+        --surface:#151829;
+        --text:#eef0fa;
+        --muted:#9aa0bd;
+        --line:#252941;
+        --a1:#8083ff;
+        --a2:#22d3ee;
+    }
+}
+
+
+:root[data-theme="dark"] {
+    --bg: #0b0d18;
+    --surface: #151829;
+    --text: #eef0fa;
+    --muted: #9aa0bd;
+    --line: #252941;
+    --a1: #8083ff;
+    --a2: #22d3ee;
+}
+
+
+*,*::before,*::after {
+    box-sizing:border-box;
+}
+
+html {
+    scroll-behavior:smooth;
+    scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));
+}
+
+body {
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter,system-ui,sans-serif;
+    line-height:1.65;
+    overflow-x:hidden;
+}
+
+h1,h2,h3 {
+    font-family:"Space Grotesk",Inter,sans-serif;
+    line-height:1.15;
+    margin:0;
+}
+
+a {
+    color:inherit;
+    text-decoration:none;
+}
+
+.wrap {
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 20px;
+    position:relative;
+}
+
+section {
+    padding:80px 0;
+}
+
+.grad {
+    background:var(--grad);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+body::before {
+    content:"";
+    position:fixed;
+    inset:0 0 auto;
+    height:env(safe-area-inset-top,0px);
+    background:var(--bg);
+    z-index:60;
+}
+
+#pg {
+    position:fixed;
+    top:env(safe-area-inset-top,0px);
+    left:0;
+    height:3px;
+    width:0;
+    background:var(--grad);
+    z-index:70;
+}
+
+.blob {
+    position:fixed;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:.28;
+    z-index:-1;
+    animation:fl 14s ease-in-out infinite alternate;
+}
+
+.b1 {
+    width:380px;
+    height:380px;
+    background:var(--a1);
+    top:-80px;
+    left:-100px;
+}
+
+.b2 {
+    width:340px;
+    height:340px;
+    background:var(--a2);
+    bottom:-60px;
+    right:-80px;
+    animation-delay:-6s;
+}
+
+@keyframes fl {
+    to {transform:translate(60px,50px) scale(1.15)}
+}
+
+header {
+    position:sticky;
+    top:env(safe-area-inset-top,0px);
+    z-index:50;
+    background:color-mix(in srgb,var(--bg) 82%,transparent);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+}
+
+nav {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:64px;
+}
+
+.logo {
+    font:700 1.25rem "Space Grotesk",sans-serif;
+}
+
+.links {
+    display:flex;
+    gap:24px;
+    align-items:center;
+}
+
+.links a {
+    color:var(--muted);
+    font-weight:500;
+    font-size:.93rem;
+    transition:color .2s;
+}
+
+.links a:hover {
+    color:var(--a1);
+}
+
+.tools {
+    display:flex;
+    gap:8px;
+}
+
+.ib {
+    background:none;
+    border:1px solid var(--line);
+    color:var(--text);
+    border-radius:10px;
+    padding:7px 12px;
+    font-size:1rem;
+    cursor:pointer;
+}
+
+.menu {
+    display:none;
+}
+
+.btn {
+    display:inline-block;
+    padding:12px 24px;
+    border-radius:12px;
+    font-weight:600;
+    border:1px solid var(--line);
+    background:var(--surface);
+    color:var(--text);
+    cursor:pointer;
+    font:inherit;
+    transition:transform .2s,box-shadow .2s;
+}
+
+.btn:hover {
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px rgba(91,91,240,.28);
+}
+
+.btn.p {
+    background:var(--grad);
+    color:#fff;
+    border:0;
+}
+
+.hero {
+    padding:60px 0 70px;
+}
+
+.hero .wrap {
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.tag {
+    display:inline-block;
+    padding:6px 14px;
+    border:1px solid var(--line);
+    background:var(--surface);
+    border-radius:99px;
+    font-size:.85rem;
+    color:var(--muted);
+    margin-bottom:18px;
+}
+
+.hero h1 {
+    font-size:clamp(2.2rem,6vw,3.8rem);
+    margin-bottom:16px;
+}
+
+.hero p {
+    color:var(--muted);
+    max-width:540px;
+    font-size:1.05rem;
+    margin:0 0 6px;
+}
+
+.typed {
+    font:600 1.25rem "Space Grotesk",sans-serif;
+    margin-bottom:14px;
+    min-height:1.6em;
+}
+
+.typed::after {
+    content:"|";
+    margin-left:2px;
+    animation:bl 1s steps(1) infinite;
+    color:var(--a1);
+}
+
+@keyframes bl {
+    50% {opacity:0}
+}
+
+.cta {
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:26px;
+}
+
+/* Kartu profil */
+
+.hang {
+    position:relative;
+    height:560px;
+    display:flex;
+    justify-content:center;
+    user-select:none;
+}
+
+.swing {
+    position:absolute;
+    top:0;
+    left:50%;
+    width:250px;
+    margin-left:-125px;
+    transform-origin:50% 0;
+    cursor:grab;
+    touch-action:none;
+    will-change:transform;
+}
+
+.swing:active {
+    cursor:grabbing;
+}
+
+.strap {
+    width:26px;
+    height:150px;
+    margin:0 auto;
+    background:repeating-linear-gradient(135deg,var(--a1) 0 8px,var(--a2) 8px 16px);
+    border-radius:0 0 4px 4px;
+    box-shadow:0 0 0 2px rgba(0,0,0,.08);
+}
+
+.clip {
+    width:34px;
+    height:26px;
+    margin:-2px auto 0;
+    background:linear-gradient(#cfd3e6,#8d93b0);
+    border-radius:6px 6px 12px 12px;
+    position:relative;
+    z-index:2;
+}
+
+.pcard {
+    margin-top:-8px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:14px 14px 18px;
+    box-shadow:0 30px 60px rgba(40,40,120,.28);
+    position:relative;
+    overflow:hidden;
+}
+
+.pcard::before {
+    content:"";
+    position:absolute;
+    inset:0 0 auto;
+    height:92px;
+    background:var(--grad);
+}
+
+.hole {
+    position:relative;
+    width:46px;
+    height:8px;
+    border-radius:9px;
+    background:var(--bg);
+    margin:0 auto 10px;
+    box-shadow:inset 0 1px 3px rgba(0,0,0,.3);
+}
+
+.ph {
+    position:relative;
+    width:150px;
+    height:170px;
+    margin:0 auto 12px;
+    border-radius:18px;
+    border:4px solid var(--surface);
+    background:var(--grad);
+    display:grid;
+    place-items:center;
+    font:700 4rem "Space Grotesk",sans-serif;
+    color:#fff;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+.ph img {
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    pointer-events:none;
+}
+
+.pcard h3 {
+    text-align:center;
+    font-size:1.3rem;
+}
+
+.pcard .role {
+    text-align:center;
+    color:var(--a1);
+    font-weight:600;
+    font-size:.85rem;
+    margin-bottom:10px;
+}
+
+.mini {
+    display:flex;
+    justify-content:space-around;
+    border-top:1px dashed var(--line);
+    padding-top:10px;
+    font-size:.75rem;
+    color:var(--muted);
+    text-align:center;
+}
+
+.mini b {
+    display:block;
+    color:var(--text);
+    font-size:.95rem;
+}
+
+.bc {
+    height:22px;
+    margin-top:10px;
+    background:repeating-linear-gradient(90deg,var(--text) 0 2px,transparent 2px 4px,var(--text) 4px 5px,transparent 5px 8px);
+    opacity:.75;
+    border-radius:3px;
+}
+
+.hint {
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    text-align:center;
+    color:var(--muted);
+    font-size:.85rem;
+}
+
+.hint label {
+    display:inline-block;
+    margin-top:6px;
+    color:var(--a1);
+    font-weight:600;
+    cursor:pointer;
+    text-decoration:underline;
+}
+
+.sh {
+    margin-bottom:36px;
+}
+
+.sh span {
+    color:var(--a1);
+    font-weight:600;
+    font-size:.9rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+}
+
+.sh h2 {
+    font-size:clamp(1.8rem,4vw,2.5rem);
+    margin-top:6px;
+}
+
+.about {
+    display:grid;
+    grid-template-columns:1.6fr 1fr;
+    gap:32px;
+}
+
+.about p {
+    margin:0 0 14px;
+    color:var(--muted);
+}
+
+.stats {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    align-content:start;
+}
+
+.card {
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:22px;
+    transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+
+.card:hover {
+    transform:translateY(-5px);
+    border-color:var(--a1);
+    box-shadow:0 14px 34px rgba(91,91,240,.16);
+}
+
+.stat b {
+    display:block;
+    font:700 2rem "Space Grotesk",sans-serif;
+}
+
+.stat small {
+    color:var(--muted);
+}
+
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:18px;
+}
+
+.card h3 {
+    font-size:1.15rem;
+    margin-bottom:10px;
+}
+
+.chips {
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.chips span {
+    padding:5px 12px;
+    border-radius:99px;
+    background:var(--bg);
+    border:1px solid var(--line);
+    font-size:.85rem;
+}
+
+.bar {
+    margin-top:14px;
+    font-size:.85rem;
+    color:var(--muted);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+
+.bar i {
+    display:block;
+    flex-basis:100%;
+    height:6px;
+    border-radius:9px;
+    background:var(--line);
+    margin-top:6px;
+    overflow:hidden;
+}
+
+.bar i::after {
+    content:"";
+    display:block;
+    height:100%;
+    width:0;
+    background:var(--grad);
+    border-radius:9px;
+    transition:width 1.2s .2s cubic-bezier(.2,.8,.2,1);
+}
+
+.in .bar i::after {
+    width:var(--w);
+}
+
+.fl {
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:22px;
+}
+
+.fl .btn {
+    padding:8px 18px;
+    font-size:.9rem;
+}
+
+.fl .on {
+    background:var(--grad);
+    color:#fff;
+    border:0;
+}
+
+.proj .ico {
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.proj p {
+    color:var(--muted);
+    margin:0 0 14px;
+    font-size:.95rem;
+}
+
+.proj .ln {
+    display:flex;
+    gap:16px;
+    margin-top:16px;
+}
+
+.proj .ln a {
+    color:var(--a1);
+    font-weight:600;
+    font-size:.9rem;
+}
+
+.proj.hid {
+    display:none;
+}
+
+.tl {
+    border-left:2px solid var(--line);
+    padding-left:26px;
+    display:grid;
+    gap:22px;
+}
+
+.tl .card {
+    position:relative;
+}
+
+.tl .card::before {
+    content:"";
+    position:absolute;
+    left:-35px;
+    top:28px;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background:var(--grad);
+    border:3px solid var(--bg);
+}
+
+.tl small {
+    color:var(--a1);
+    font-weight:600;
+}
+
+.tl p {
+    margin:6px 0 0;
+    color:var(--muted);
+    font-size:.95rem;
+}
+
+.ach {
+    text-align:center;
+}
+
+.ach .e {
+    font-size:2.2rem;
+}
+
+.ach p {
+    color:var(--muted);
+    font-size:.9rem;
+    margin:6px 0 0;
+}
+
+.why {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:16px;
+}
+
+.contact {
+    text-align:center;
+}
+
+.contact>.wrap>p {
+    color:var(--muted);
+    max-width:520px;
+    margin:0 auto 28px;
+}
+
+.cg {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:14px;
+    margin-top:10px;
+}
+
+.cg a.card {
+    display:block;
+    text-align:center;
+    font-weight:600;
+}
+
+.cg small {
+    display:block;
+    color:var(--muted);
+    font-weight:400;
+    word-break:break-all;
+}
+
+footer {
+    padding:28px 0;
+    text-align:center;
+    color:var(--muted);
+    font-size:.85rem;
+    border-top:1px solid var(--line);
+}
+
+.rv {
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .7s,transform .7s;
+}
+
+.rv.in {
+    opacity:1;
+    transform:none;
+}
+
+@media(max-width:820px) {
+    .hero .wrap,.about {
+        grid-template-columns:1fr;
+    }
+
+    .hang {
+        order:-1;
+        height:520px;
+    }
+
+    .menu {
+        display:block;
+    }
+
+    .links {
+        display:none;
+        position:absolute;
+        top:64px;
+        left:0;
+        right:0;
+        flex-direction:column;
+        gap:0;
+        background:var(--surface);
+        border-bottom:1px solid var(--line);
+    }
+
+    .links.open {
+        display:flex;
+    }
+
+    .links a {
+        padding:14px 20px;
+        width:100%;
+        border-top:1px solid var(--line);
+    }
+
+    section {
+        padding:60px 0;
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .rv {
+        opacity:1;
+        transform:none;
+        transition:none;
+    }
+
+    html {
+        scroll-behavior:auto;
+    }
+
+    .blob {
+        animation:none;
+    }
+
+    
+/* Gambar Project */
+.proj-img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    border: 1px solid var(--line);
+    transition: transform .3s ease;
+}
+
+.proj-img:hover {
+    transform: scale(1.03);
+}
+
+.proj {
+    overflow: hidden;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div id="pg"></div>
+<div class="blob b1"></div>
+<div class="blob b2"></div>
+
+<header>
+<div class="wrap">
+<nav>
+
+<a href="#home" class="logo grad">Beny.dev</a>
+
+<div class="links" id="ln">
+<a href="#tentang">Tentang</a>
+<a href="#keahlian">Keahlian</a>
+<a href="#project">Project</a>
+<a href="#pengalaman">Pengalaman</a>
+<a href="#kontak">Kontak</a>
+</div>
+
+<div class="tools">
+<button class="ib" id="th" aria-label="Ganti tema">🌓</button>
+<button class="ib menu" id="mb" aria-label="Menu">☰</button>
+</div>
+
+</nav>
+</div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="wrap">
+
+<div>
+<span class="tag">Portofolio</span>
+
+<h1>Halo, saya <span class="grad">Beny</span>.<br>Siap membangun solusi digital.</h1>
+
+<div class="typed" id="ty"></div>
+
+<p>Analitis, teliti, dan berorientasi pada pemecahan masalah. Antusias di pengembangan aplikasi, pemrograman, pengolahan data, dan pengembangan sistem.</p>
+
+<div class="cta">
+<a class="btn p" href="#kontak">🤝 Hubungi Saya</a>
+<a class="btn" href="#project">📁 Lihat Project</a>
+</div>
+</div>
+
+<div class="hang" id="hang">
+
+<div class="swing" id="sw">
+
+<div class="strap"></div>
+<div class="clip"></div>
+
+<div class="pcard">
+
+<div class="hole"></div>
+
+<div class="ph">
+    <img src="images/profil.jpeg" alt="Foto Profil Beny">
+</div>
+
+<h3>Beny Lakamal</h3>
+<div class="role"> IT Project </div>
+
+
+<div class="bc"></div>
+
+</div>
+</div>
+
+<div class="hint">
+<label for="up"></label>
+<input type="file" id="up" accept="image/*" hidden>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- TENTANG -->
+<section id="tentang">
+<div class="wrap">
+
+<div class="sh rv">
+<span>💻 Profil</span>
+<h2>Tentang Saya</h2>
+</div>
+
+<div class="about rv">
+
+<div>
+<p>Fresh graduate Program Studi Teknologi Informasi dengan IPK 3,21, memiliki ketertarikan kuat pada bidang teknologi informasi, khususnya pengembangan aplikasi, pemrograman, pengolahan data, dan pengembangan sistem.</p>
+
+<p>Memiliki pemahaman dasar mengenai bahasa pemrograman, basis data, jaringan komputer, serta analisis dan perancangan sistem informasi. Terbiasa berpikir analitis, teliti, dan berorientasi pada pemecahan masalah.</p>
+
+<p>Memiliki semangat belajar yang tinggi, mampu bekerja secara mandiri maupun dalam tim, serta mudah beradaptasi dengan lingkungan baru. Siap mengembangkan kompetensi, menerapkan pengetahuan yang dimiliki, dan memberikan kontribusi positif bagi perusahaan.</p>
+</div>
+
+<div class="stats">
+
+<div class="card stat"><b class="grad" data-n="3.21" data-d="2">0</b><small>IPK</small></div>
+<div class="card stat"><b class="grad" data-n="4" data-s="+">0</b><small>Project selesai</small></div>
+<div class="card stat"><b class="grad" data-n="6" data-s="+">0</b><small>Teknologi dikuasai</small></div>
+<div class="card stat"><b class="grad" data-n="100" data-s="%">0</b><small>Semangat belajar</small></div>
+
+</div>
+</div>
+</div>
+</section>
+
+<!-- NILAI TAMBAH -->
+<section id="nilai">
+<div class="wrap">
+
+<div class="sh rv">
+<span>⭐ Nilai Tambah</span>
+<h2>Kenapa Merekrut Saya?</h2>
+</div>
+
+<div class="why">
+
+<div class="card ach rv"><div class="e">🧠</div><h3>Analitis</h3><p>Memecah masalah kompleks menjadi langkah yang jelas dan terukur.</p></div>
+
+<div class="card ach rv"><div class="e">🎯</div><h3>Teliti</h3><p>Memperhatikan detail agar hasil kerja rapi dan minim kesalahan.</p></div>
+
+<div class="card ach rv"><div class="e">🚀</div><h3>Cepat Belajar</h3><p>Terbiasa mempelajari teknologi baru secara mandiri.</p></div>
+
+<div class="card ach rv"><div class="e">🤝</div><h3>Kolaboratif</h3><p>Nyaman bekerja mandiri maupun dalam tim dan mudah beradaptasi.</p></div>
+
+</div>
+</div>
+</section>
+
+<!-- KEAHLIAN -->
+<section id="keahlian">
+<div class="wrap">
+
+<div class="sh rv">
+<span>🛠️ Skill</span>
+<h2>Keahlian &amp; Teknologi</h2>
+</div>
+
+
+<div class="grid">
+
+    <!-- PROJECT 1 -->
+    <div class="card proj rv" data-c="web">
+
+        <img src="images/project-akademik.png"
+             alt="Sistem Informasi Akademik"
+             class="proj-img">
+
+        <h3>Sistem Informasi Akademik</h3>
+
+        <p>Aplikasi web pengelolaan data mahasiswa, nilai, dan jadwal dengan autentikasi multi-peran.</p>
+
+        <div class="chips">
+            <span>PHP</span>
+            <span>MySQL</span>
+            <span>Bootstrap</span>
+        </div>
+
+        <div class="ln">
+            <a href="#">Demo ↗</a>
+            <a href="#">Kode ↗</a>
+        </div>
+
+    </div>
+
+
+    <!-- PROJECT 2 -->
+    <div class="card proj rv" data-c="data">
+
+        <img src="images/project-dashboard.png"
+             alt="Dashboard Analisis Data"
+             class="proj-img">
+
+        <h3>Dashboard Analisis Data</h3>
+
+        <p>Pengolahan dan visualisasi data penjualan untuk membantu pengambilan keputusan.</p>
+
+        <div class="chips">
+            <span>Python</span>
+            <span>Pandas</span>
+            <span>Matplotlib</span>
+        </div>
+
+        <div class="ln">
+            <a href="#">Demo ↗</a>
+            <a href="#">Kode ↗</a>
+        </div>
+
+    </div>
+
+
+    <!-- PROJECT 3 -->
+    <div class="card proj rv" data-c="web">
+
+        <img src="images/project-web.png"
+             alt="Aplikasi Web Responsif"
+             class="proj-img">
+
+        <h3>Aplikasi Web Responsif</h3>
+
+        <p>Antarmuka responsif dengan perancangan UI/UX yang berfokus pada kenyamanan pengguna.</p>
+
+        <div class="chips">
+            <span>JavaScript</span>
+            <span>Figma</span>
+        </div>
+
+        <div class="ln">
+            <a href="#">Demo ↗</a>
+            <a href="#">Kode ↗</a>
+        </div>
+
+    </div>
+
+
+    <!-- PROJECT 4 -->
+    <div class="card proj rv" data-c="net">
+
+        <img src="images/project-jaringan.png"
+             alt="Simulasi Jaringan Kampus"
+             class="proj-img">
+
+        <h3>Simulasi Jaringan Kampus</h3>
+
+        <p>Perancangan topologi jaringan lengkap dengan VLAN, subnetting, dan routing.</p>
+
+        <div class="chips">
+            <span>Packet Tracer</span>
+            <span>VLAN</span>
+            <span>OSPF</span>
+        </div>
+
+        <div class="ln">
+            <a href="#">Dokumentasi ↗</a>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="card rv" style="margin-top:18px">
+<h3>🧰 Tools Harian</h3>
+<div class="chips">
+<span>VS Code</span><span>Git &amp; GitHub</span><span>Figma</span><span>XAMPP</span><span>Postman</span><span>Jupyter</span><span>Laragon</span><span>MS Office</span>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- PROJECT -->
+<section id="project">
+<div class="wrap">
+
+<div class="sh rv">
+<span>📁 Karya</span>
+<h2>Daftar Project</h2>
+</div>
+
+<div class="fl" id="fl">
+<button class="btn on" data-f="all">Semua</button>
+<button class="btn" data-f="web">Web</button>
+<button class="btn" data-f="data">Data</button>
+<button class="btn" data-f="net">Jaringan</button>
+</div>
+
+<div class="grid">
+
+<div class="card proj rv" data-c="web">
+<div class="ico">🧾</div>
+<h3>Sistem Informasi Akademik</h3>
+<p>Aplikasi web pengelolaan data mahasiswa, nilai, dan jadwal dengan autentikasi multi-peran.</p>
+<div class="chips"><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+<div class="ln"><a href="#">Demo ↗</a><a href="#">Kode ↗</a></div>
+</div>
+
+<div class="card proj rv" data-c="data">
+<div class="ico">📊</div>
+<h3>Dashboard Analisis Data</h3>
+<p>Pengolahan dan visualisasi data penjualan untuk membantu pengambilan keputusan.</p>
+<div class="chips"><span>Python</span><span>Pandas</span><span>Matplotlib</span></div>
+<div class="ln"><a href="#">Demo ↗</a><a href="#">Kode ↗</a></div>
+</div>
+
+<div class="card proj rv" data-c="web">
+<div class="ico">📱</div>
+<h3>Aplikasi Web Responsif</h3>
+<p>Antarmuka responsif dengan perancangan UI/UX yang berfokus pada kenyamanan pengguna.</p>
+<div class="chips"><span>JavaScript</span><span>Figma</span></div>
+<div class="ln"><a href="#">Demo ↗</a><a href="#">Kode ↗</a></div>
+</div>
+
+<div class="card proj rv" data-c="net">
+<div class="ico">🛰️</div>
+<h3>Simulasi Jaringan Kampus</h3>
+<p>Perancangan topologi jaringan lengkap dengan VLAN, subnetting, dan routing.</p>
+<div class="chips"><span>Packet Tracer</span><span>VLAN</span><span>OSPF</span></div>
+<div class="ln"><a href="#">Dokumentasi ↗</a></div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- PENGALAMAN -->
+<section id="pengalaman">
+<div class="wrap">
+
+<div class="sh rv">
+<span>🏆 Perjalanan</span>
+<h2>Pengalaman &amp; Pencapaian</h2>
+</div>
+
+<div class="tl">
+
+<div class="card rv">
+<small>2022 – 2026</small>
+<h3>S1 Teknologi Informasi · IPK 3,21</h3>
+<p>Mempelajari pemrograman, basis data, jaringan komputer, serta analisis dan perancangan sistem informasi.</p>
+</div>
+
+<div class="card rv">
+<small>2025</small>
+<h3>Magang / Praktik Kerja Lapangan</h3>
+<p>Membuat sistem absensi berbasis lokasi pada dinas pendidikan dan kebudayaan kota kupang</p>
+</div>
+
+<div class="card rv">
+<small>2022-2024</small>
+<h3>Organisasi</h3>
+<p>Masuk dalam kepanitian Persekutuan Mahasiswa Kristen (PMK) sebagai sekretaris </p>
+</div>
+
+</div>
+
+<div class="grid" style="margin-top:22px">
+
+<div class="card ach rv"><div class="e">📜</div><h3>Sertifikasi</h3><p>Mengikuti pelatihan Investasi Cerdas di Era Digital</p></div>
+
+<div class="card ach rv"><div class="e">🥇</div><h3>Lomba &amp; Penghargaan</h3><p>Berhasil menjuaraih Tournament Mobile di kampus sebanyak 3x </p></div>
+
+<div class="card ach rv"><div class="e">🎓</div><h3>Tugas Akhir</h3><p>IMPLEMENTASI HYBRID AI-BASED PHISHING AND QUISHING DETECTION SYSTEM MENGGUNAKAN CNN-LSTM DAN ANALISIS CYBER SECURITY BERBASIS MOBILE</p></div>
+
+</div>
+</div>
+</section>
+
+<!-- KONTAK -->
+<section id="kontak" class="contact">
+<div class="wrap rv">
+
+<div class="sh">
+<span>📞 Kontak</span>
+<h2>Mari Terhubung</h2>
+</div>
+
+<p>Terbuka untuk peluang kerja, magang, maupun diskusi seputar teknologi. Jangan ragu menghubungi saya.</p>
+
+<div class="cg">
+
+<a class="card" href="mailto:benilakamal3@gmail.com">✉️ Email<small>benilakamal3@gmail.com</small></a>
+
+<a class="card" href="https://wa.me/6282236953573">💬 WhatsApp<small>+62 8223-6953-573 </small></a>
+
+<a class="card" href="https://github.com/beny_lakamal">🐙 GitHub<small>github.com/beny_lakamal</small></a>
+
+<a class="card" href="https://instagram.com/beny_lakamal">📸 Instagram<small>@beny_lakamal</small></a>
+
+</div>
+
+<div class="cta" style="justify-content:center;margin-top:30px">
+<a class="btn p" href="mailto:benilakamal3@gmail.com?subject=Lamaran%20Kerja">Kirim Email Sekarang</a>
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer>© 2026 Beny · Dibuat dengan semangat belajar</footer>
+
+<script>
+
+var R = document.documentElement;
+
+/* DARK MODE */
+
+document.getElementById('th').onclick = function() {
+    var d = getComputedStyle(R).getPropertyValue('--bg').trim() === '#0b0d18';
+    R.setAttribute('data-theme',d ? 'light' : 'dark');
+};
+
+/* MENU MOBILE */
+
+var ln = document.getElementById('ln');
+
+document.getElementById('mb').onclick = function() {
+    ln.classList.toggle('open');
+};
+
+ln.onclick = function(e) {
+    if(e.target.tagName === 'A') {
+        ln.classList.remove('open');
+    }
+};
+
+/* PROGRESS SCROLL */
+
+window.addEventListener('scroll',function() {
+    var h = R.scrollHeight - innerHeight;
+    document.getElementById('pg').style.width =
+        (h > 0 ? scrollY / h * 100 : 0) + '%';
+},{passive:true});
+
+/* EFEK MENGETIK */
+
+var roles = [
+    'Web Developer',
+    'Data Enthusiast',
+    'System Analyst',
+    'Problem Solver'
+];
+
+var ri = 0, ci = 0, del = false;
+var ty = document.getElementById('ty');
+
+(function tick() {
+    var w = roles[ri];
+    ty.textContent = w.slice(0,ci);
+
+    if(!del && ci < w.length) {
+        ci++;
+        setTimeout(tick,90);
+    }
+    else if(!del) {
+        del = true;
+        setTimeout(tick,1400);
+    }
+    else if(ci > 0) {
+        ci--;
+        setTimeout(tick,45);
+    }
+    else {
+        del = false;
+        ri = (ri + 1) % roles.length;
+        setTimeout(tick,300);
+    }
+})();
+
+/* REVEAL + COUNTER */
+
+function cnt(el) {
+    var n = parseFloat(el.dataset.n);
+    var d = +el.dataset.d || 0;
+    var s = el.dataset.s || '';
+    var t0 = null;
+
+    function f(t) {
+        if(!t0) t0 = t;
+
+        var p = Math.min((t-t0)/1200,1);
+        var v = n * (1-Math.pow(1-p,3));
+
+        el.textContent =
+            (d ? v.toFixed(d).replace('.',',') : Math.round(v)) + s;
+
+        if(p < 1) requestAnimationFrame(f);
+    }
+
+    requestAnimationFrame(f);
+}
+
+var els = document.querySelectorAll('.rv');
+
+if('IntersectionObserver' in window) {
+
+    var io = new IntersectionObserver(function(es) {
+
+        es.forEach(function(e) {
+
+            if(e.isIntersecting) {
+
+                e.target.classList.add('in');
+
+                e.target.querySelectorAll('[data-n]').forEach(cnt);
+
+                io.unobserve(e.target);
+            }
+        });
+
+    },{threshold:.12});
+
+    els.forEach(function(el) {
+        io.observe(el);
+    });
+
+} else {
+
+    els.forEach(function(el) {
+        el.classList.add('in');
+        el.querySelectorAll('[data-n]').forEach(cnt);
+    });
+
+}
+
+/* FILTER PROJECT */
+
+document.getElementById('fl').onclick = function(e) {
+
+    var f = e.target.dataset.f;
+
+    if(!f) return;
+
+    this.querySelectorAll('.btn').forEach(function(b) {
+        b.classList.toggle('on',b === e.target);
+    });
+
+    document.querySelectorAll('.proj').forEach(function(p) {
+        p.classList.toggle('hid',f !== 'all' && p.dataset.c !== f);
+    });
+
+};
+
+/* ==================================
+   FOTO PROFIL - LOCAL STORAGE
+================================== */
+
+var photoInput = document.getElementById('up');
+var photoBox = document.getElementById('ph');
+var initial = document.getElementById('ini');
+
+/* Fungsi menampilkan foto */
+
+function tampilkanFoto(src) {
+
+    var img = document.createElement('img');
+
+    img.src = src;
+    img.alt = 'Foto profil';
+
+    photoBox.querySelectorAll('img').forEach(function(x) {
+        x.remove();
+    });
+
+    photoBox.appendChild(img);
+
+    initial.style.display = 'none';
+}
+
+/* Memuat foto saat halaman dibuka */
+
+try {
+
+    var fotoTersimpan = localStorage.getItem('fotoProfil');
+
+    if(fotoTersimpan) {
+        tampilkanFoto(fotoTersimpan);
+    }
+
+} catch(error) {
+
+    console.error('Tidak dapat membaca foto:',error);
+
+}
+
+/* Upload foto baru */
+
+photoInput.addEventListener('change',function() {
+
+    var file = this.files[0];
+
+    if(!file) return;
+
+    /* Validasi format */
+
+    if(!file.type.startsWith('image/')) {
+
+        alert('Silakan pilih file gambar yang valid!');
+
+        this.value = '';
+        return;
+    }
+
+    /* Validasi ukuran maksimal 2 MB */
+
+    if(file.size > 2 * 1024 * 1024) {
+
+        alert('Ukuran foto maksimal 2 MB!');
+
+        this.value = '';
+        return;
+    }
+
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+
+        var fotoBase64 = e.target.result;
+
+        try {
+
+            localStorage.setItem('fotoProfil',fotoBase64);
+
+            tampilkanFoto(fotoBase64);
+
+            alert('Foto profil berhasil disimpan!');
+
+        } catch(error) {
+
+            alert('Gagal menyimpan foto. Penyimpanan browser mungkin penuh.');
+
+            console.error(error);
+        }
+
+    };
+
+    reader.onerror = function() {
+
+        alert('Gagal membaca file foto!');
+
+    };
+
+    reader.readAsDataURL(file);
+
+});
+
+/* ==================================
+   FISIKA AYUNAN KARTU PROFIL
+================================== */
+
+(function() {
+
+    var sw = document.getElementById('sw');
+    var hg = document.getElementById('hang');
+
+    var th = 0.5;
+    var om = 0;
+    var drag = false;
+    var last = 0;
+    var lt = 0;
+
+    var K = 16;
+    var C = 0.9;
+    var MAX = 1.25;
+
+    function px(e) {
+
+        var r = hg.getBoundingClientRect();
+
+        return [
+            e.clientX - (r.left + r.width/2),
+            e.clientY - r.top
+        ];
+
+    }
+
+    sw.addEventListener('pointerdown',function(e) {
+
+        drag = true;
+
+        sw.setPointerCapture(e.pointerId);
+
+        last = th;
+        lt = performance.now();
+
+        e.preventDefault();
+
+    });
+
+    sw.addEventListener('pointermove',function(e) {
+
+        if(!drag) return;
+
+        var p = px(e);
+        var dy = Math.max(p[1],40);
+
+        var a = -Math.atan2(p[0],dy);
+
+        th = Math.max(-MAX,Math.min(MAX,a));
+
+    });
+
+    function end() {
+        drag = false;
+    }
+
+    sw.addEventListener('pointerup',end);
+    sw.addEventListener('pointercancel',end);
+
+    function loop(t) {
+
+        var dt = Math.min((t-lt)/1000 || 0.016,0.033);
+
+        lt = t;
+
+        if(drag) {
+
+            var v = (th-last)/dt;
+
+            om = om*0.6 + v*0.4;
+
+            last = th;
+
+        } else {
+
+            om += (-K*Math.sin(th)-C*om)*dt;
+
+            th += om*dt;
+
+            if(Math.abs(th)<0.0004 && Math.abs(om)<0.002) {
+
+                th = 0;
+                om = 0;
+
+            }
+
+        }
+
+        sw.style.transform = 'rotate('+th+'rad)';
+
+        requestAnimationFrame(loop);
+
+    }
+
+    requestAnimationFrame(loop);
+
+})();
+
+</script>
+
+</body>
+</html>
